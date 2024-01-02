@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>010224' sql usage </title>
+</head>
+<body>
+    <h2>0102 SQL usage</h2>
+    <p>
+       Which actions can you perform on the data using CRUD? <br>
+        <b>C</b> Create <br>
+        <b>R</b> Read <br>
+        <b>U</b> Update <br>
+        <b>D</b> Delete <br>
+        <br>
+        Benefits of SQL <br>---------------<br>
+        SQL is a standard language that works with all relational databases. This means that there’s a lot of support andinformation available for SQL users.<br>
+        SQL is a user-friendly language that requires zero to little coding skills as it relies mostly on a set of keywords.<br>
+        SQL is a portable language which can be executed on any hardware running any operating system.<br>
+        SQL can be used to perform a wide range of useful database operations.<br>
+        SQL can process large amounts of data quickly and efficiently <br>
+        <br> <br>
+        SQL subsets <br>-----------<br>
+        DDL data definition language <br>---------------<br>
+        #cmd used to create storage objects in db, like tables <br>
+        >> DDL create <br>
+        #cmd used to modify the structure of a table in db <br>
+        >> DDL alter <br>
+        #cmd used to remove a object from db <br>
+        >> DDL drop <br>
+        <br>
+        <br>
+
+        DML data manipulation language <br>--------------------<br>
+        #cmd used to insert records of data into db  <br>
+        >> DML insert <br>
+        <br>
+        #cmd used to edit data already in db <br>
+        >> DML update <br>
+        <br>
+        #cmd used to delte one or more rows of data from a table <br>
+        >> DML delete <br>
+        <br>
+
+        DQL data query language <br>-------------------<br>
+        Used to read data stored in a database <br>
+        <br>
+
+        DCL data control language <br>--------------------<br>
+        Used to control access to the db <br>
+        >> ddl grant <br>
+        >> ddl revoke <br>
+    </p>
+    <p>
+        #0102 create a database<br>----------------<br>
+        >> CREATE DATABASE database_name_want; <br>
+        <br>______#ex2 <i>create db named college </i> <br>
+        >> CREATE DATABASE college; <br>
+        <br>
+        #create a table <br>---------------<br>
+        >> CREATE TABLE table_name_wanted; <br>
+        <br>
+        _________#ex <i>create a table</i> >used to hold info about students <br>
+        >> CREATE TABLE Student; <br>
+        <br>
+        # add data to the table <br>--------------------<br>
+        >> INSERT INTO table_name <br>(column_one, columnt_two,...)<br>
+        VALUES (value1, value2, value3, ...); <br>
+        <br>
+        __________#ex <i>add data to table </i> <br>
+        >> INSERT INTO Student(column_ID, first_name, last_name, date_of_birth)<br>VALUES (value1, value2, value3, ...); <br>
+        <br>
+        # update data in a table <br>
+        >> UPDATE Student SET date_of_birth = '2000-10-12' WHERE ID = 02; <br>
+        <br>
+        # delete data from a table <br>
+        >> DELETE FROM Student WHERE ID = 03; <br>
+        <br>
+        # query data within a table <br>
+        SELECT first_name, last_name, <br>
+        FROM Student <br>
+        WHERE ID = '01'; <br>
+        <br>
+
+        <br>
+
+    </p>
+</body>
+</html>
