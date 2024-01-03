@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>0103 django serializers notes</title>
+</head>
+<body>
+    <h2>0103 django serializers notes</h2>
+    <p>
+        #serializers.py ex0103 <br>---------------<br>
+        <a href="from" class="from">from</a> rest_framework <a href="import" class="import">import</a> serializers <br>
+        <br>
+        <a href="class" class="class">class</a> <b>MenuItemSerializer</b>(serializers.Serializer):<br>
+        .. id = serializers.IntegerField() <br>
+        .. title = serializers.CharField(max_length=255) <br>
+        .. price = serializers.DecimalField(max_digits=6, decimal_places=2) <br>
+        .. inventory = serializers.IntegerField() <br>
+        <br>
+    </p>
+    <p>
+        #views.py  ex0103 <br>-----------------<br>
+        <sup>
+            <a href="from" class="from">from</a> .models <a href="import" class="import">import</a> <i><b>MenuItem</b></i> <br>
+            <a href="from" class="from">from</a> .serializers <a href="import" class="import">import</a> <b>MenuItemSerializer</b> <br>
+            <a href="from" class="from">from</a> rest_framework.response <a href="import" class="import">import</a> Response <br>
+            <a href="from" class="from">from</a> rest_framework.decorators <a href="import" class="import">import</a> api_view <br>
+        </sup>
+        <br>
+        <a href="api_view" class="apiview">@api_view()</a> <br>
+        <a href="def" class="def">def</a> <i>menu_items</i>(request): <br>
+        .. items = <i><b>MenuItem</b></i>.objects.all() <br>
+        .. serialized_item = <b>MenuItemSerializer</b>(items, many=True) <br>
+        .. <a href="return" class="return">return</a> <b>Response</b>(serialized_items.data) <br>
+        <br>
+        <a href="api_view" class="apiview">@api_view()</a> <br>
+        <a href="def" class="def">def</a> <i>single_item</i>(request, id): <br>
+        .. items = <i><b>MenuItem</b></i>.objects.get(pk=id) <br>
+        .. serialized_item = <b>MenuItemSerializer</b>(item) <br>
+        .. <a href="return" class="return">return</a> <b>Response</b>(serialized_items.data) <br>
+        <br>
+
+
+
+    </p>
+</body>
+</html>
