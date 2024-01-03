@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        p {border: 2px blue dashed; margin: 5px 0 10px 5px; padding: 5px 0 10px 5px; }
+        p {border: 2px blue dashed; padding: 5px 0 10px 5px; border-radius: 5px 0 25px 0;}
 
     </style>
     <title>0103 django serializers notes</title>
 </head>
 <body>
     <h2>0103 django serializers notes</h2>
+    <a href="#botpg" id="topg">Link to page bottom</a> <br>
+    <a href="0101_homepage.html">Link to 0101_homepage w/ git install demo</a> <br>
+    <br>
     <p>
         #models.py  <br>--------------<br>
         <sup>
@@ -23,7 +26,7 @@
 
     </p>
     <p>
-        #serializers.py ex0103 <br>---------------<br><sup>
+        ________# serializers.py ex0103 <br>---------------<br><sup>
         <a href="from" class="from">from</a> rest_framework <a href="import" class="import">import</a> serializers <br>
         </sup><br>
         <a href="class" class="class">class</a> <b>MenuItemSerializer</b>(serializers.Serializer):<br>
@@ -32,8 +35,9 @@
         .. price = serializers.DecimalField(max_digits=6, decimal_places=2) <br>
         .. inventory = serializers.IntegerField() <br>
         <br>
+        <hr>
         <br>
-        # modelSerializer ex0103 <br>------------------<br>
+        ________# modelSerializer ex0103 <br>------------------<br>
         <sup>
         <a href="from" class="from">from</a> rest_framework <a href="import" class="import">import</a> serializers <br>
         <a href="from" class="from">from</a> .models <a href="import" class="import">import</a> <i><b>MenuItem</b></i> <br>
@@ -43,6 +47,32 @@
         .. <a href="class" class="class">class</a> Meta: <br>
         ...... model = <i><b>MenuItem</b></i> <br>
         ...... fields = [<a href="list" id="list">'id', 'title', 'price', 'inventory'</a>] <br>
+    <hr>
+        <br>
+        # to change the label from inventory to stock <br>
+        <br>
+        <a href="class" class="class">class</a> <b>MenuItemSerializer</b>(serializers.ModelSerializer): <br>
+        .. stock = serializers.IntegerField(source='inventory') <br>
+        .. <a href="class" class="class">class</a> Meta: <br>
+        ...... model = <i><b>MenuItem</b></i> <br>
+        ...... fields = [<a href="list" id="list">'id', 'title', 'price', 'stock'</a>] <br>
+    <hr>
+    <br><br>
+        # add a new method called calculate_tax <br>
+        <br>
+        <a href="class" class="class">class</a> <b>MenuItemSerializer</b>(serializers.ModelSerializer): <br>
+        .. stock = serializers.IntegerField(source='inventory') <br>
+        .. price_after_tax = serializers.SerializerMethodField(method_name = 'calculate_tax') <br><br>
+        .. <a href="class" class="class">class</a> Meta: <br>
+        ...... model = <i><b>MenuItem</b></i> <br>
+        ...... fields = [<a href="list" id="list">'id', 'title', 'price', 'stock', 'price_after_tax'</a>] <br>
+        <br>
+        .. <a href="def" class="def">def</a> <i>calculate_tax</i>(self, product:<b><i>MenuItem</i></b>): <br>
+        ...... <a href="return" class="return">return</a> product.price * Decimal(1.1) <br>
+        <br>
+    <hr>
+
+
     </p>
     <p>
         #views.py  ex0103 <br>-----------------<br>
@@ -78,5 +108,7 @@
         .. path('menu-items/< int:id>', views.<i>single_item</i>
         ]<br>
     </p>
+    <br><br>
+    <a href="#topg" id="botpg">Link to page top</a>
 </body>
 </html>

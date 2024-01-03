@@ -12,6 +12,8 @@ def home(request):
 def notes(request):
     return render(request, '0101_django_notes.html', {})
 
+def notes2(request):
+    return render(request, '0103_django_serializations.html', {})
 
 # 0103 added method and if else
 @api_view(['GET','POST'])
