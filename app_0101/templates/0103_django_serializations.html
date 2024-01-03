@@ -2,20 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <style>
+        p {border: 2px blue dashed; margin: 5px 0 10px 5px; padding: 5px 0 10px 5px; }
+
+    </style>
     <title>0103 django serializers notes</title>
 </head>
 <body>
     <h2>0103 django serializers notes</h2>
     <p>
-        #serializers.py ex0103 <br>---------------<br>
-        <a href="from" class="from">from</a> rest_framework <a href="import" class="import">import</a> serializers <br>
+        #models.py  <br>--------------<br>
+        <sup>
+        <a href="from" class="from">from</a> django.db <a href="import" class="import">import</a> models <br>
+        </sup> <br>
+        <a href="class" class="class">class</a> <i><b>MenuItem</b></i>(models.Model): <br>
+        .. title = models.CharField(max_length=255) <br>
+        .. price = models.DecimalField(max_digits=6, decimal_places=2) <br>
+        .. inventory = models.SmallIntegerField() <br>
         <br>
+
+    </p>
+    <p>
+        #serializers.py ex0103 <br>---------------<br><sup>
+        <a href="from" class="from">from</a> rest_framework <a href="import" class="import">import</a> serializers <br>
+        </sup><br>
         <a href="class" class="class">class</a> <b>MenuItemSerializer</b>(serializers.Serializer):<br>
         .. id = serializers.IntegerField() <br>
         .. title = serializers.CharField(max_length=255) <br>
         .. price = serializers.DecimalField(max_digits=6, decimal_places=2) <br>
         .. inventory = serializers.IntegerField() <br>
         <br>
+        <br>
+        # modelSerializer ex0103 <br>------------------<br>
+        <sup>
+        <a href="from" class="from">from</a> rest_framework <a href="import" class="import">import</a> serializers <br>
+        <a href="from" class="from">from</a> .models <a href="import" class="import">import</a> <i><b>MenuItem</b></i> <br>
+        </sup><br>
+        <br>
+        <a href="class" class="class">class</a> <b>MenuItemSerializer</b>(serializers.ModelSerializer): <br>
+        .. <a href="class" class="class">class</a> Meta: <br>
+        ...... model = <i><b>MenuItem</b></i> <br>
+        ...... fields = [<a href="list" id="list">'id', 'title', 'price', 'inventory'</a>] <br>
     </p>
     <p>
         #views.py  ex0103 <br>-----------------<br>
@@ -38,9 +65,18 @@
         .. serialized_item = <b>MenuItemSerializer</b>(item) <br>
         .. <a href="return" class="return">return</a> <b>Response</b>(serialized_items.data) <br>
         <br>
-
-
-
+    </p>
+    <p>
+        # urls.py <br>------------<br>
+        <sup>
+        <a href="from" class="from">from</a> django.urls <a href="import" class="import">import</a> path <br>
+        <a href="from" class="from">from</a> . <a href="import" class="import">import</a> views <br>
+        </sup>
+        <br>
+        <i>urlpatterns</i> = [<br>
+        .. path('menu-items/', views.<i>menu_items</i>, <br>
+        .. path('menu-items/< int:id>', views.<i>single_item</i>
+        ]<br>
     </p>
 </body>
 </html>
