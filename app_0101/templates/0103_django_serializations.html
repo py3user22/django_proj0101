@@ -95,6 +95,25 @@
         .. serialized_item = <b>MenuItemSerializer</b>(item) <br>
         .. <a href="return" class="return">return</a> <b>Response</b>(serialized_items.data) <br>
         <br>
+        <br>
+        <hr>
+        # ex0103 using generics for CRUD operations <br>-------------------------<br>
+        <sup>
+            <a href="from" class="from">from</a> .models <a href="import" class="import">import</a> <i><b>MenuItem</b></i> <br>
+            <a href="from" class="from">from</a> .serializers <a href="import" class="import">import</a> <b>MenuItemSerializer</b> <br>
+            <a href="from" class="from">from</a> rest_framework <a href="import" class="import">import</a> generics <br>
+        </sup>
+        <br>
+        <a href="class" class="class">class</a> <i>MenuItemView</i>(generics.ListCreateAPIView): <br>
+        .. queryset = <b><i>MenuItem</i></b>.objects.all() <br>
+        .. serializer_class = <b>MenuItemSerializer</b> <br>
+        <br>
+        <a href="class" class="class">class</a> <i>SingleMenuItemView</i>(generics.RetrieveUpdateAPIView, generics.DestroyAPIView): <br>
+        .. queryset = <b><i>MenuItem</i></b>.objects.all() <br>
+        .. serializer_class = <b>MenuItemSerializer</b>
+        <br>
+        <br>
+
     </p>
     <p>
         # urls.py <br>------------<br>
@@ -105,7 +124,9 @@
         <br>
         <i>urlpatterns</i> = [<br>
         .. path('menu-items/', views.<i>menu_items</i>, <br>
-        .. path('menu-items/< int:id>', views.<i>single_item</i>
+        .. path('menu-items/< int:id>', views.<i>single_item</i>, <br>
+        .. path('menu-items', views.<i>MenuItemView</i>.as_view()), <br>
+        .. path('menu-items/< int:pk>', views.<i>SingleMenuItemView</i>.as_view()), <br>
         ]<br>
     </p>
     <br><br>
