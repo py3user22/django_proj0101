@@ -117,17 +117,27 @@ B:<br> <b>CREATE TABLE</b> <i>feedback</i>(feedbackID CHAR(8), feedbackType VARC
     </p>
     <p>
         #create your db<br>-------------<br>
-        >> create database name_here <br>
+        >> create database db_name_here; <br>
         <br>
         #change to the new db <br>--------------<br>
-        >> use name_here <br>
+        >> use db_name_here; <br>
         <br>
+        <br>
+        # to remove a db <br>-------------------<br>
+        DROP DATABASE db_name_here; <br>
+        <br>
+        <br>
+
     </p>
     <p>
         With TINYTEXT, columns can hold any type of character and a maximum length of 255 characters. <br>
         <br>
         TEXT is a string datatype that can be used to define columns requiring less than 65535 characters such as the body content of an article. <br>
         <br>
+        DECIMAL data type is used for numbers with fractions. <br>
+        <br>
+
+
 
     </p>
     <p>
@@ -144,6 +154,116 @@ B:<br> <b>CREATE TABLE</b> <i>feedback</i>(feedbackID CHAR(8), feedbackType VARC
         .. city varchar(30) DEFAULT "Barcelona", <br>); <br>
 
     </p>
+    <p>
+        # 0104 working with default values <br>------------------------<br>
+        CREATE TABLE address(id int not null, street varchar(255), postcode varchar(10), town varchar(30) default "Harrow"); <br>
+        <br>
+        # ex2 <br>----------------------<br>
+        CREATE TABLE Address (id int NOT NULL,  street VARCHAR(255), postcode VARCHAR(10) DEFAULT "HA97DE", town VARCHAR(30) DEFAULT "Harrow"); <br>
+        <br>
+        # ex3 skill level of all players must auto set at lvl 1.  <br>------------------------<br>
+        level INT DEFAULT 1; <br><br>
+        <br>
+        # ex4 default example <br>---------------------<br>
+        City VARCHAR(30) DEFAULT "London" <br><br>
+        <br>
+        # ex5 alt way to write and still be true statement<br>-----------------------<br>
+        CREATE TABLE Players <br>
+(<br>
+    .. playerName VARCHAR(50), <br>
+    .. club VARCHAR (10) <br>
+    .. DEFAULT "Newport FC", city  <br>
+    .. VARCHAR (100) DEFAULT "Newport" <br>
+); <br>
+    </p>
+    <p>
+        #0104 ex new table <br>----------------------<br>
+        CREATE TABLE invoice (customerName VARCHAR(50), orderDate DATE, quantity INT, price DECIMAL);  <br>
+        <br>
+        # show tables in db <br>----------------------<br>
+        SHOW tables; <br>
+        <br>
+        # show columns in table <br>------------------------<br>
+        SHOW columns FROM invoice; <br>
+        show columns from invoice; <br>
+        <br>
+        # new table added <br>---------------------<br>
+        CREATE TABLE <i>name_wanted</i> ( <br>
+        .. Account_number int, <br>
+        .. Phone_number int, <br>
+        .. Email varchar(255), ) <br>
+        <br>
+        # new table example4 <br>----------------<br>
+    CREATE TABLE players (<br>
+    .. playerNumber INT, <br>
+    .. fullName VARCHAR(100), <br>
+    .. date_of_birth DATE ); <br>
+    <br>
+    # alter a table <br>---------------------<br>
+        ALTER TABLE table_name ADD (column_name DATA TYPE): <br>
+        <br>
+        notes: must have a db already, and data to alter ! <br>
+        <br>
+        alter table students ADD (age int, country varchar(50), nationality varchar(250)); <br>
+        <br>
+        <br>
+        # alter example 2 with drop <br>------------------<br>
+        ALTER TABLE students DROP COLUMN nationality; <br>
+        <br>
+        # alter ex3 with modify a already made value <br>-------------------------<br>
+        alter table students MODIFY country VARCHAR(100); <br>
+        <br>
+        <br>
+        # insert data into db <br>----------------------<br>
+        INSERT INTO table_name (column1_name, column2_name, column3_name)
+        VALUES (value1, value2, value3); <br>
+        <br>
+        <br>
+        # insert many values into columns ex2 <br>------------------------<br>
+        INSERT INTO table_name (column1_name, column2_name, column3_name)
+        VALUES <br>
+        (value1, value2, value3), <br>
+        (value1, value2, value3), <br>
+        (value1, value2, value3); <br>
+        <br>
+        <br>
+        # ex4 for insert new data into db <br>------------------------<br>
+        INSERT INTO players(ID, name, age, start_date) <br>
+        VALUES (1, "JesusG", 42, "2020-10-15"); <br>
+        <br>
+        <br>
+        # ex5 for adding 2 new records <br>--------------------<br>
+        INSERT INTO players(ID, name, age, start_date) <br>
+        VALUES (2, "Mark", 27, "2020-10-12"), (3, "Karl", 26, "2020-10-07"); <br>
+        <br>
+    </p>
+    <p>
+        #to select all data from table <br>--------------------<br>
+        SELECT * FROM players; <br>
+        <br>
+        <br>
+        # new table ex6 <br>----------------------<br>
+        CREATE TABLE customers ( <br>
+        .. CustomerId INT, <br>
+        .. FirstName VARCHAR(40), <br>
+        .. LastName VARCHAR(20), <br>
+        .. Company VARCHAR(80), <br>
+        .. Address VARCHAR(70), <br>
+        .. City VARCHAR(40), <br>
+        .. State VARCHAR(40), <br>
+        .. Country VARCHAR(40), <br>
+        .. PostalCode VARCHAR(10), <br>
+        .. Phone VARCHAR(24), <br>
+        .. Fax VARCHAR(24), <br>
+        .. Email VARCHAR(60), <br>
+        .. SupportRapid INT); <br>
+
+    </p>
+
+
+
+
+
 
     <a href="#topg" id="botpg">Link to page top</a>
 </body>
