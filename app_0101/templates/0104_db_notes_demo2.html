@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        p {border: 2px blue dashed; border-radius: 0 10px 0 10px; padding: 5px 0 5px 10px;}
+    </style>
+    <title>0104 0104_db_notes_demo2</title>
+</head>
+<body>
+    <a href="0101_homepage.html">Link to 0101_homepage w/ git install demo</a> <br>
+    <br>
+    <h2>0104 database notes CHAR, VARCHAR </h2>
+    <p>
+        Instructions <br>
+    Please attempt the below tasks before you continue, so you can check and compare your answers with our solution. <br>
+    Create a SQL statement with relevant attributes and data types as follows:<br>
+    <br>1.      Identify a suitable name for the table in which you want to store data about mobile devices. <br>
+    2.      Identify the data type for each column of the table. <br>
+    3.      Write a complete SQL statement to create the table inside the cm_devices database. <br>
+    <br><br>
+    Creating the table <br>---------------<br>
+    1.  When you create a table in a database, you need to identify a suitable name. In this case, you can call it "customers". <br>
+    2.  Based on 'CM Mobiles' requirements the customers table will have three columns: <br>
+    <br>●	username
+    <br>●	full name
+    <br>●	email address
+    <br>
+    <br>3.  The customer username contains alphanumeric values such as: Custom001, Custom002, and Custom003. Notice here that the username is always nine characters in length, so choose the CHAR datatype as it allows for a fixed length of characters.<br>In this case, choose 9 characters, no more or less. Therefore you can declare the username in the SQL statement using the following SQL syntax:
+    <br> >> username CHAR(9) <br> <br>
+    4.  The full name and email address must be more flexible in terms of the length as they can vary from one customer to another. So choose the VARCHAR datatype and define the maximum length expected for each value. Declare these two columns in SQL as follows: <br>
+    <br> >> fullname VARCHAR (100) <br> <br>
+    5.  This means the full name value would be a string of maximum 100 characters.<br> Similarly, you can define the email address in SQL as: <br>
+    >> email VARCHAR(255) <br><br>
+    # This means the maximum length of the email will be 255 characters. <br>
+    </p>
+    <hr>
+    <p>
+    1.	Type the following SQL statement inside the SQL terminal editor in the Coursera platform. <br>
+    <br>> <b>CREATE DATABASE</b> <i>cm_devices</i>; <br> <br>
+    2.	# Press Enter to execute the CREATE DATABASE statement. <br> <br>
+    3.	Make sure you select the database in order to use it by typing the following SQL statement. <br>
+    >> <b>USE</b> <i>cm_devices</i>; <br>
+    # Press Enter to execute the query. The output result: “Database changed” is displayed in the terminal section. <br>
+    <br> >> Select the right database by typing -->  Use cm_devices; <br>
+    <br>
+    Now let’s write the SQL statement to create the customers table in the database.<br>------------------<br>
+    SQL statement <br>
+    1.      Write CREATE TABLE command followed by the name of the table (customers in this case).<br>
+        >> <b>CREATE TABLE</b> <i>customers</i> <br><br>
+    2.      Open parenthesis to define the table columns including username, full name and email. <br><br>
+    >>
+3.      Assign each column a suitable datatype as described earlier.<br><br>
+
+4.      Add a closing parenthesis and a semi-colon at the end of the SQL statement.<br>The complete SQL statement is shown below.<br><br>
+<br>
+>> <b>CREATE TABLE</b> <i>customers</i>(username CHAR(9), fullName VARCHAR(100), email VARCHAR(255)); <br><br>
+
+5.      Execute the query by pressing enter. <br><br>
+
+If you have followed all the steps correctly, you should now be able to see the customers table created inside the cm_devices database by typing: <br>
+<br> >> SHOW tables; <br><br>
+Press enter to execute the query. The output displays all tables existing in the “cm_devices” database. <br>
+<br> Output of query displaying all tables in cm devices database <br>
+You have correctly defined the string data types and created the customer table. <br><br>
+
+If you want to check the structure of the customers table type the following SQL statement and press Enter.<br>
+>> <b>SHOW</b> columns FROM customers; <br>
+
+_______#This will show you all the customers table columns and data types. <br>
+<br>
+All the customers table columns and data types displayed when typing Show columns from customers <br>
+There are other SQL string data types that work like VARCHAR with varied sizes of lengths of characters.<br><br>For example, the “TEXT” data type can be used to define columns requiring less than 65535 characters. <br>This data type could be used to store text content like an article. <br>
+In this exercise, you have practiced how to define string datatypes in a database.<br> Here is an additional task for you to test your skills.
+    </p>
+    <p>
+        Additional task <br>
+    Mr. Carl Merkel wants to create another basic table in the cm_devices database to store the customers' feedback. This table must include three columns:<br>
+    ●	Feedback ID column, <br>●	Feedback type column with a maximum of 100 characters,<br>●	A comment column with a maximum of 500 characters.<br>
+
+The feedback table is illustrated below.<br><br>
+
+Feedback ID |  Feedback type | Feedback comment <br>
+---------------------------------------------------<br>
+Feed0001  ..|.. Good ..........|..It is a very good product but the delivery was not great.<br>
+Feed0002  ..|..Very good ....|..No comment<br>
+<br>
+You are required to complete the following tasks: <br>
+<br>
+A. Declare the columns with the right data type for each. <br>
+
+B. Write the SQL statement that creates the feedback table. <br>
+
+_____#Solution:<br>A:<br>
+Feedback id: CHAR(8) <br>
+Category: VARCHAR(100) <br>
+Comment:  TEXT(500) <br>
+<br>
+B:<br> <b>CREATE TABLE</b> <i>feedback</i>(feedbackID CHAR(8), feedbackType VARCHAR(100), comment TEXT(500)); <br>
+    </p>
+    <p>
+        #ex0104 -> to see the columns in table <br>
+        >> show columns from feedback; <br>
+        +=====================<br>| Field ...............|. Type ..<br>
+        ======================<br>| feedbackID .....|. char(8) <br>
+        | feddbackType .|. varchar(100) <br>
+        | comment..........|. text <br>________________________<br>
+    </p>
+    <p>
+        #ex0104  demo2-> to see the columns in table <br>
+        >> show columns from customers; <br>
+        +=====================<br>| Field ........|. Type ..<br>
+        ======================<br>| username .|. char(9) <br>
+        | fullName .|. varchar(100) <br>
+        | email .......|. varchar(255) <br>________________________<br>
+    </p>
+    <p>
+        #create your db<br>-------------<br>
+        >> create database name_here <br>
+        <br>
+        #change to the new db <br>--------------<br>
+        >> use name_here <br>
+        <br>
+    </p>
+    <p>
+        With TINYTEXT, columns can hold any type of character and a maximum length of 255 characters. <br>
+        <br>
+        TEXT is a string datatype that can be used to define columns requiring less than 65535 characters such as the body content of an article. <br>
+        <br>
+
+    </p>
+</body>
+</html>
